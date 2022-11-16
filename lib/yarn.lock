@@ -1198,6 +1198,19 @@
     polished "^4.2.2"
     tslib "^2.4.0"
 
+"@cardinal/common@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@cardinal/common/-/common-4.0.1.tgz#cf6895c47a986e7f5a75b1260eb1a663233b141a"
+  integrity sha512-We4m3pTQouHhay4RrPJJOvmV0KOGy7vuKSRaseLPvUjdEfQRZ9SN/Oy2U4v326wBcdonVc72EAYFAqYWBJgRFQ==
+  dependencies:
+    "@project-serum/anchor" "^0.24.2"
+    "@solana/buffer-layout" "^4.0.0"
+    "@solana/spl-token" "^0.3.5"
+    "@solana/web3.js" "^1.66.2"
+    bignumber.js "^9.1.0"
+    polished "^4.2.2"
+    tslib "^2.4.0"
+
 "@cardinal/eslint-config-react@^1.0.10":
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/@cardinal/eslint-config-react/-/eslint-config-react-1.0.10.tgz#60c955886995d42dd11577d735a4fb0e9d1e1526"
