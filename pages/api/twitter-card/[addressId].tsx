@@ -29,7 +29,7 @@ const twitterCard = async (req: NextApiRequest, res: NextApiResponse) => {
       const clusterParam = req.query.cluster as string
       const foundEnvironment =
         ENVIRONMENTS.find(
-          (e) => e.label === (firstParam(clusterParam) || 'mainnet')
+          (e) => e.label === (firstParam(clusterParam) || 'mainnet-beta')
         ) ?? ENVIRONMENTS[0]!
       const connection = new Connection(foundEnvironment?.primary)
 
