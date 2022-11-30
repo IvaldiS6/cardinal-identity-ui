@@ -264,6 +264,7 @@ export const handleError = (
       (e as SendTransactionError)?.message,
     ] ?? [(e as Error).toString()] ??
     []
+  console.log(logs)
 
   const matchedErrors: { programMatch?: boolean; errorMatch?: string }[] = [
     ...[
