@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@cardinal/certificates": "^2.0.1",
-    "@cardinal/common": "^3.0.1",
+    "@cardinal/common": "^6.0.1",
     "@cardinal/eslint-config-react": "^1.0.10",
     "@cardinal/namespaces": "^4.1.60",
     "@cardinal/token-manager": "^2.0.1",

@@ -42,7 +42,7 @@ export const useHandleUnlink = (
       userTokenData?: UserTokenData
     }> => {
       const trace = tracer({ name: 'useHandleUnlink' })
-      const transaction = await withTrace(
+      let transaction = await withTrace(
         () =>
           handleUnlink(connection, wallet, {
             namespaceName: namespaceName,
@@ -57,7 +57,7 @@ export const useHandleUnlink = (
       transaction.recentBlockhash = (
         await connection.getRecentBlockhash('max')
       ).blockhash
-      await wallet.signTransaction(transaction)
+      transaction = await wallet.signTransaction(transaction)
       const txid = await withTrace(
         () =>
           sendAndConfirmRawTransaction(connection, transaction.serialize(), {}),

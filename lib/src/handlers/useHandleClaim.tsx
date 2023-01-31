@@ -61,13 +61,13 @@ export const useHandleClaim = (
       }
 
       const encodedTxs = json.transactions as string[]
-      const transactions = encodedTxs.map((tx) =>
+      let transactions = encodedTxs.map((tx) =>
         Transaction.from(Buffer.from(decodeURIComponent(tx), 'base64'))
       )
 
       if (!transactions) return ''
       let txId = ''
-      await wallet.signAllTransactions(transactions)
+      transactions = await wallet.signAllTransactions(transactions)
       for (const tx of transactions) {
         txId = await withTrace(
           () => sendAndConfirmRawTransaction(connection, tx.serialize(), {}),
