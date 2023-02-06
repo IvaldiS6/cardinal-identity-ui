@@ -1,6 +1,6 @@
 import type { AccountData, CertificateData } from '@cardinal/certificates'
 import { certificateIdForMint, getCertificate } from '@cardinal/certificates'
-import { tryGetAccount } from '@cardinal/common'
+import { findMintMetadataId, tryGetAccount } from '@cardinal/common'
 import type { EntryData } from '@cardinal/namespaces'
 import { getNameEntry, NAMESPACES_PROGRAM_ID } from '@cardinal/namespaces'
 import * as metaplex from '@metaplex-foundation/mpl-token-metadata'
@@ -14,7 +14,7 @@ import { tracer, withTrace } from '../utils/trace'
 export type NameEntryData = {
   nameEntry: AccountData<EntryData>
   certificate?: AccountData<CertificateData>
-  metaplexData?: AccountData<metaplex.MetadataData>
+  metaplexData?: AccountData<metaplex.Metadata>
   largestHolders: TokenAccountBalancePair[]
   owner: PublicKey | undefined
   isOwnerPDA: boolean
@@ -33,19 +33,12 @@ export async function getNameEntryData(
   )
   const { mint } = nameEntry.parsed
 
-  const [[metaplexId], [certificateId]] = await withTrace(
-    () =>
-      Promise.all([
-        metaplex.MetadataProgram.findMetadataAccount(new PublicKey(mint)),
-        certificateIdForMint(mint),
-      ]),
-    trace,
-    { op: 'collectIds' }
-  )
+  const metadataId = findMintMetadataId(new PublicKey(mint))
+  const [certificateId] = await certificateIdForMint(mint)
   const [metaplexData, certificate] = await withTrace(
     () =>
       Promise.all([
-        metaplex.Metadata.load(connection, metaplexId),
+        metaplex.Metadata.fromAccountAddress(connection, metadataId),
         tryGetAccount(() => getCertificate(connection, certificateId)),
       ]),
     trace,
@@ -80,7 +73,7 @@ export async function getNameEntryData(
   return {
     nameEntry,
     certificate: certificate ?? undefined,
-    metaplexData: { pubkey: metaplexData.pubkey, parsed: metaplexData.data },
+    metaplexData: { pubkey: metadataId, parsed: metaplexData },
     largestHolders: largestHolders.value,
     owner: largestTokenAccount?.owner,
     isOwnerPDA,

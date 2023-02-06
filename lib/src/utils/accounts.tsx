@@ -1,7 +1,10 @@
 import type { CertificateData } from '@cardinal/certificates'
 import { CERTIFICATE_IDL, CERTIFICATE_PROGRAM_ID } from '@cardinal/certificates'
-import { getBatchedMultipleAccounts } from '@cardinal/common'
-import type { AccountData } from '@cardinal/token-manager'
+import type { AccountData } from '@cardinal/common'
+import {
+  getBatchedMultipleAccounts,
+  METADATA_PROGRAM_ID,
+} from '@cardinal/common'
 import type { PaidClaimApproverData } from '@cardinal/token-manager/dist/cjs/programs/claimApprover'
 import {
   CLAIM_APPROVER_ADDRESS,
@@ -23,11 +26,7 @@ import {
   USE_INVALIDATOR_IDL,
 } from '@cardinal/token-manager/dist/cjs/programs/useInvalidator'
 import * as metaplex from '@metaplex-foundation/mpl-token-metadata'
-import {
-  EditionData,
-  MasterEditionV2Data,
-  MetadataKey,
-} from '@metaplex-foundation/mpl-token-metadata'
+import { Edition } from '@metaplex-foundation/mpl-token-metadata'
 import { BorshAccountsCoder } from '@project-serum/anchor'
 import * as splToken from '@solana/spl-token'
 import { unpackAccount, unpackMint } from '@solana/spl-token'
@@ -61,13 +60,9 @@ export type AccountDataById = {
     | (AccountData<UseInvalidatorData> & AccountInfo<Buffer> & AccountTypeData)
     | (splToken.Account & AccountTypeData)
     | (splToken.Mint & AccountInfo<Buffer> & AccountTypeData)
-    | (AccountData<metaplex.MetadataData> &
-        AccountInfo<Buffer> &
-        AccountTypeData)
-    | (AccountData<metaplex.EditionData> &
-        AccountInfo<Buffer> &
-        AccountTypeData)
-    | (AccountData<metaplex.MasterEditionData> &
+    | (AccountData<metaplex.Metadata> & AccountInfo<Buffer> & AccountTypeData)
+    | (AccountData<metaplex.Edition> & AccountInfo<Buffer> & AccountTypeData)
+    | (AccountData<metaplex.MasterEditionV2> &
         AccountInfo<Buffer> &
         AccountTypeData)
     | (AccountData<undefined> & AccountInfo<Buffer> & AccountTypeData)
@@ -174,32 +169,25 @@ export const deserializeAccountInfos = (
                 ...unpackAccount(accountIds[i]!, accountInfo),
               }
         return acc
-      case metaplex.MetadataProgram.PUBKEY.toString():
+      case METADATA_PROGRAM_ID.toString():
         try {
-          acc[accountIds[i]!.toString()] = {
-            type: 'metaplexMetadata',
-            pubkey: accountIds[i]!,
-            parsed: metaplex.MetadataData.deserialize(
-              accountInfo?.data as Buffer
-            ) as metaplex.MetadataData,
-            ...(accountInfo as AccountInfo<Buffer>),
+          if (accountInfo) {
+            acc[accountIds[i]!.toString()] = {
+              type: 'metaplexMetadata',
+              pubkey: accountIds[i]!,
+              parsed: metaplex.Metadata.deserialize(accountInfo.data)[0],
+              ...(accountInfo as AccountInfo<Buffer>),
+            }
           }
         } catch (e) {}
         try {
-          const key =
-            accountInfo === null || accountInfo === void 0
-              ? void 0
-              : (accountInfo.data as Buffer)[0]
           let parsed
-          if (key === MetadataKey.EditionV1) {
-            parsed = EditionData.deserialize(accountInfo?.data as Buffer)
-          } else if (
-            key === MetadataKey.MasterEditionV1 ||
-            key === MetadataKey.MasterEditionV2
-          ) {
-            parsed = MasterEditionV2Data.deserialize(
+          try {
+            parsed = Edition.deserialize(accountInfo?.data as Buffer)[0]
+          } catch (e) {
+            parsed = metaplex.MasterEditionV2.deserialize(
               accountInfo?.data as Buffer
-            )
+            )[0]
           }
           if (parsed) {
             acc[accountIds[i]!.toString()] = {

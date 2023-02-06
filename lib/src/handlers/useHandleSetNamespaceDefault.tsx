@@ -1,4 +1,3 @@
-import { tryPublicKey } from '@cardinal/common'
 import {
   withSetGlobalReverseEntry,
   withSetNamespaceReverseEntry,
@@ -41,7 +40,7 @@ export const useHandleSetNamespaceDefault = (
     }): Promise<{ txid: string; namespaceName: string } | undefined> => {
       if (!tokenData) return undefined
       let transactions: Transaction[] = []
-      const entryMint = tryPublicKey(tokenData.metaplexData?.parsed.mint)
+      const entryMint = tokenData.metaplexData?.parsed.mint
       if (!entryMint) return undefined
       const [entryName, namespaceName] = nameFromToken(tokenData)
       const trace = tracer({ name: 'useGlobalReverseEntry' })
@@ -56,7 +55,7 @@ export const useHandleSetNamespaceDefault = (
           { op: 'handleMigrate' }
         )
         transactions = response?.transactions || []
-        await wallet.signAllTransactions(transactions)
+        transactions = await wallet.signAllTransactions(transactions)
         for (let i = 0; i < transactions.length; i++) {
           try {
             txid = await withTrace(

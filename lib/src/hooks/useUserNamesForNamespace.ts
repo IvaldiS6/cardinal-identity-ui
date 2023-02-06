@@ -17,14 +17,14 @@ import { tracer, withTrace } from '../utils/trace'
 
 export type UserTokenData = {
   tokenAccount?: AccountData<ParsedTokenAccountData>
-  metaplexData?: AccountData<metaplex.MetadataData>
+  metaplexData?: AccountData<metaplex.Metadata>
   tokenManager?: AccountData<TokenManagerData>
   certificate?: AccountData<CertificateData> | null
   identity: Identity
 }
 
 export const identityFromMetaplexData = (
-  metaplexData: AccountData<metaplex.MetadataData> | undefined,
+  metaplexData: AccountData<metaplex.Metadata> | undefined,
   identities: (Identity & { namespaceId: string })[]
 ): (Identity & { namespaceId: string }) | undefined => {
   return identities.find(
@@ -96,20 +96,8 @@ export const useUserNamesForNamespace = (
         }))
 
       // lookup metaplex data
-      const metaplexIds = await withTrace(
-        () =>
-          Promise.all(
-            tokenAccounts.map(
-              async (tokenAccount) =>
-                (
-                  await metaplex.MetadataProgram.findMetadataAccount(
-                    new PublicKey(tokenAccount.parsed.mint)
-                  )
-                )[0]
-            )
-          ),
-        trace,
-        { op: 'collectMetaplexIds' }
+      const metaplexIds = tokenAccounts.map(
+        (tokenAccount) => new PublicKey(tokenAccount.parsed.mint)
       )
 
       const metaplexAccountInfos = await withTrace(
@@ -120,12 +108,12 @@ export const useUserNamesForNamespace = (
       const metaplexData = metaplexAccountInfos.reduce(
         (acc, accountInfo, i) => {
           try {
-            acc[tokenAccounts[i]!.pubkey.toString()] = {
-              pubkey: metaplexIds[i]!,
-              ...accountInfo,
-              parsed: metaplex.MetadataData.deserialize(
-                accountInfo?.data as Buffer
-              ) as metaplex.MetadataData,
+            if (accountInfo) {
+              acc[tokenAccounts[i]!.pubkey.toString()] = {
+                pubkey: metaplexIds[i]!,
+                ...accountInfo,
+                parsed: metaplex.Metadata.fromAccountInfo(accountInfo)[0],
+              }
             }
           } catch (e) {}
           return acc
@@ -133,7 +121,7 @@ export const useUserNamesForNamespace = (
         {} as {
           [tokenAccountId: string]: {
             pubkey: PublicKey
-            parsed: metaplex.MetadataData
+            parsed: metaplex.Metadata
           }
         }
       )

@@ -13,7 +13,7 @@ import { tracer, withTrace } from '../utils/trace'
 export interface HandleSetParam {
   metaplexData?: {
     pubkey: PublicKey
-    parsed: metaplex.MetadataData
+    parsed: metaplex.Metadata
   } | null
   tokenManager?: AccountData<TokenManagerData>
   certificate?: AccountData<CertificateData> | null

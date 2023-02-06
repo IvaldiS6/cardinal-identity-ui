@@ -48,8 +48,9 @@ const twitterCard = async (req: NextApiRequest, res: NextApiResponse) => {
           reverseEntry = await getGlobalReverseNameEntry(connection, tryAddress)
         }
         handle = reverseEntry.parsed.entryName
-        if (isKnownIdentity(reverseEntry.parsed.namespaceName)) {
-          identity = IDENTITIES[reverseEntry.parsed.namespaceName]
+        const namespaceName = reverseEntry.parsed.namespaceName
+        if (isKnownIdentity(namespaceName)) {
+          identity = IDENTITIES[namespaceName]
         }
       } else {
         const nameEntry = await getNameEntry(

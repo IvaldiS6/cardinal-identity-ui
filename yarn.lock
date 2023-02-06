@@ -1166,6 +1166,15 @@
     ts-mocha "^9.0.2"
     typescript "^4.5.5"
 
+"@cardinal/certificates@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@cardinal/certificates/-/certificates-4.0.0.tgz#f164781db76c9b9bb8c41a3f7ba21ada24615797"
+  integrity sha512-8Np8UHJwP92VKS+n4TeVUMUQQS5CINmMAzxyRXNacsN5hLOm/S1alsu4x53LbPGdpNZbJxOfq14/YpRT2XETbg==
+  dependencies:
+    "@project-serum/anchor" "0.26.0"
+    "@solana/spl-token" "^0.3.5"
+    typescript "^4.5.5"
+
 "@cardinal/common@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@cardinal/common/-/common-4.0.1.tgz#cf6895c47a986e7f5a75b1260eb1a663233b141a"
@@ -1179,7 +1188,7 @@
     polished "^4.2.2"
     tslib "^2.4.0"
 
-"@cardinal/common@^5.0.7":
+"@cardinal/common@^5.0.2", "@cardinal/common@^5.0.7":
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/@cardinal/common/-/common-5.0.7.tgz#f225b9eb4a8e7d780a14d80a1c0ba4c495be2d06"
   integrity sha512-7sZDczfvNFq9uSiYO94Mfjhf8GIk/644xTFawNtCau127GBK2BBsu06TEGLwfELc9dc0b22g4MWQJC0yoU90ow==
@@ -1226,17 +1235,19 @@
     eslint-plugin-react "^7.29.3"
     eslint-plugin-react-hooks "^4.3.0"
 
-"@cardinal/namespaces@^4.1.60":
-  version "4.1.60"
-  resolved "https://registry.yarnpkg.com/@cardinal/namespaces/-/namespaces-4.1.60.tgz#f73c53cd187d7421399f6a1288cb1c08d5cf3b85"
-  integrity sha512-C//A5tqehmBQNFuQ4zHwdegHymbZD+rYYTw12e9xoUsw3xzD0wMvuhu7NaBa/XmDk4/9odpaCB9eej81PwS/+g==
+"@cardinal/namespaces@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@cardinal/namespaces/-/namespaces-5.0.0.tgz#6113afc49a81849c44c954aeda8abfb2f9b91450"
+  integrity sha512-QtPYnbvGwLuoYgr3Hc/5DoqYPraiUoeBPmTh6sLndteaANnnXihwPM93FdyvpJgs3hE9Nm+fvCeP4a7FRgxQAg==
   dependencies:
-    "@cardinal/certificates" "^2.0.1"
-    "@cardinal/common" "^4.0.1"
-    "@cardinal/payment-manager" "^2.1.1"
-    "@cardinal/token-manager" "^2.0.1"
-    "@metaplex-foundation/mpl-token-metadata" "^1.2.5"
-    "@project-serum/anchor" "^0.24.2"
+    "@cardinal/certificates" "^4.0.0"
+    "@cardinal/common" "^6.0.1"
+    "@cardinal/payment-manager" "^3.0.0"
+    "@cardinal/token-manager" "^4.0.1"
+    "@metaplex-foundation/mpl-token-metadata" "^2.8.1"
+    "@project-serum/anchor" "^0.26.0"
+    "@solana/spl-token" "0.3.5"
+    "@solana/web3.js" "^1.34.0"
 
 "@cardinal/payment-manager@^2.1.1":
   version "2.1.1"
@@ -1251,23 +1262,16 @@
     "@solana/spl-token" "^0.1.8"
     "@solana/web3.js" "^1.66.2"
 
-"@cardinal/token-manager@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@cardinal/token-manager/-/token-manager-2.0.1.tgz#94d90be0a11db543a4bca25d7a6ecac927e756d9"
-  integrity sha512-b5Y9MvEB8IyuXZKTDyTGY+cSIB1KZQ69it8AN/lQaU2o7xcBQR5UQZO/9mdK9AJObN93avqHZT3/v9EFL52P5g==
+"@cardinal/payment-manager@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@cardinal/payment-manager/-/payment-manager-3.0.0.tgz#87aaa1961d80160001a87a4cd49c7d880ce09ede"
+  integrity sha512-ChEaghyV1pcOaY3lz5tPogHxv4IPfSxjTyLOZSAtgHdRpMb3EhXnpYwsgQh2upSof4uYmAjOHNEKXOrRygoTHA==
   dependencies:
-    "@cardinal/common" "^4.0.1"
-    "@cardinal/creator-standard" "^2.1.7"
-    "@cardinal/payment-manager" "^2.1.1"
-    "@metaplex-foundation/mpl-token-metadata" "^1.2.5"
-    "@solana/buffer-layout" "^4.0.0"
-    "@solana/buffer-layout-utils" "^0.2.0"
-    "@solana/spl-token" "^0.1.8"
-    borsh "^0.7.0"
-    bs58 "^4.0.1"
-    superstruct "^0.15.4"
-    tiny-invariant "^1.2.0"
-    tslib "^2.3.1"
+    "@cardinal/common" "^5.0.2"
+    "@metaplex-foundation/mpl-token-metadata" "^2.5.2"
+    "@project-serum/anchor" "^0.26.0"
+    "@solana/spl-token" "^0.3.6"
+    "@solana/web3.js" "^1.66.2"
 
 "@cardinal/token-manager@^4.0.0":
   version "4.0.0"
@@ -1277,6 +1281,21 @@
     "@cardinal/common" "^5.0.7"
     "@cardinal/creator-standard" "^2.1.7"
     "@cardinal/payment-manager" "^2.1.1"
+    "@metaplex-foundation/mpl-token-auth-rules" "^1.0.0"
+    "@msgpack/msgpack" "^2.8.0"
+    "@project-serum/anchor" "^0.26.0"
+    "@solana/spl-token" "^0.3.6"
+    "@solana/web3.js" "^1.34.0"
+    mplx-beta "npm:@metaplex-foundation/mpl-token-metadata@2.8.0"
+
+"@cardinal/token-manager@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@cardinal/token-manager/-/token-manager-4.0.1.tgz#629f5bcb4e2f6f73f9f5ccd22a5591ae7090440d"
+  integrity sha512-OOX1GdyJEsYS1CMToxENHTp8hNzNGQGcaVoemT/PtV8kSGoe4lb49PyDKYNigomnVXqFfIJZ0niFBGT6+BqcPw==
+  dependencies:
+    "@cardinal/common" "^6.0.1"
+    "@cardinal/creator-standard" "^2.1.7"
+    "@cardinal/payment-manager" "^3.0.0"
     "@metaplex-foundation/mpl-token-auth-rules" "^1.0.0"
     "@msgpack/msgpack" "^2.8.0"
     "@project-serum/anchor" "^0.26.0"
@@ -2046,6 +2065,19 @@
     "@solana/spl-token" "^0.1.8"
     "@solana/web3.js" "^1.31.0"
 
+"@metaplex-foundation/mpl-token-metadata@^2.5.2", "@metaplex-foundation/mpl-token-metadata@^2.8.1":
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/@metaplex-foundation/mpl-token-metadata/-/mpl-token-metadata-2.8.1.tgz#c4b137b7d7bfb8e7594a3cecb0a91fab05fe6e57"
+  integrity sha512-zk4neFTPaI5atCiosOHGzLX/7sLbWg4ne7zwJXVsJ0O3RYnj5ynwrWLrnvMaE+qR/6gcFy28JvxPvMexIxjbfA==
+  dependencies:
+    "@metaplex-foundation/beet" "^0.7.1"
+    "@metaplex-foundation/beet-solana" "^0.4.0"
+    "@metaplex-foundation/cusper" "^0.0.2"
+    "@solana/spl-token" "^0.3.6"
+    "@solana/web3.js" "^1.66.2"
+    bn.js "^5.2.0"
+    debug "^4.3.4"
+
 "@metaplex-foundation/rustbin@^0.3.0", "@metaplex-foundation/rustbin@^0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@metaplex-foundation/rustbin/-/rustbin-0.3.1.tgz#bbcd61e8699b73c0b062728c6f5e8d52e8145042"
@@ -2352,6 +2384,27 @@
     snake-case "^3.0.4"
     toml "^3.0.0"
 
+"@project-serum/anchor@0.26.0", "@project-serum/anchor@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@project-serum/anchor/-/anchor-0.26.0.tgz#99e15a3923a5d10514f8185b2d3909e5699d60d5"
+  integrity sha512-Nq+COIjE1135T7qfnOHEn7E0q39bQTgXLFk837/rgFe6Hkew9WML7eHsS+lSYD2p3OJaTiUOHTAq1lHy36oIqQ==
+  dependencies:
+    "@coral-xyz/borsh" "^0.26.0"
+    "@solana/web3.js" "^1.68.0"
+    base64-js "^1.5.1"
+    bn.js "^5.1.2"
+    bs58 "^4.0.1"
+    buffer-layout "^1.2.2"
+    camelcase "^6.3.0"
+    cross-fetch "^3.1.5"
+    crypto-hash "^1.3.0"
+    eventemitter3 "^4.0.7"
+    js-sha256 "^0.9.0"
+    pako "^2.0.3"
+    snake-case "^3.0.4"
+    superstruct "^0.15.4"
+    toml "^3.0.0"
+
 "@project-serum/anchor@^0.25.0":
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/@project-serum/anchor/-/anchor-0.25.0.tgz#88ee4843336005cf5a64c80636ce626f0996f503"
@@ -2364,27 +2417,6 @@
     bs58 "^4.0.1"
     buffer-layout "^1.2.2"
     camelcase "^5.3.1"
-    cross-fetch "^3.1.5"
-    crypto-hash "^1.3.0"
-    eventemitter3 "^4.0.7"
-    js-sha256 "^0.9.0"
-    pako "^2.0.3"
-    snake-case "^3.0.4"
-    superstruct "^0.15.4"
-    toml "^3.0.0"
-
-"@project-serum/anchor@^0.26.0":
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/@project-serum/anchor/-/anchor-0.26.0.tgz#99e15a3923a5d10514f8185b2d3909e5699d60d5"
-  integrity sha512-Nq+COIjE1135T7qfnOHEn7E0q39bQTgXLFk837/rgFe6Hkew9WML7eHsS+lSYD2p3OJaTiUOHTAq1lHy36oIqQ==
-  dependencies:
-    "@coral-xyz/borsh" "^0.26.0"
-    "@solana/web3.js" "^1.68.0"
-    base64-js "^1.5.1"
-    bn.js "^5.1.2"
-    bs58 "^4.0.1"
-    buffer-layout "^1.2.2"
-    camelcase "^6.3.0"
     cross-fetch "^3.1.5"
     crypto-hash "^1.3.0"
     eventemitter3 "^4.0.7"
@@ -2669,6 +2701,15 @@
   integrity sha512-lR0EMP2HC3+Mxwd4YcnZb0smnaDw7Bl2IQWZiTevRH5ZZBZn6VRWn3/92E3qdU4SSImJkA6IDHawOHAnx/qUvQ==
   dependencies:
     buffer "~6.0.3"
+
+"@solana/spl-token@0.3.5":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@solana/spl-token/-/spl-token-0.3.5.tgz#cabf9f92d755589420b46e457b9b10a879e755aa"
+  integrity sha512-0bGC6n415lGjKu02gkLOIpP1wzndSP0SHwN9PefJ+wKAhmfU1rl3AV1Pa41uap2kzSCD6F9642ngNO8KXPvh/g==
+  dependencies:
+    "@solana/buffer-layout" "^4.0.0"
+    "@solana/buffer-layout-utils" "^0.2.0"
+    buffer "^6.0.3"
 
 "@solana/spl-token@^0.1.8":
   version "0.1.8"
@@ -14996,7 +15037,7 @@ tiny-emitter@^2.0.0:
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
   integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
 
-tiny-invariant@^1.2.0, tiny-invariant@^1.3.1:
+tiny-invariant@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.3.1.tgz#8560808c916ef02ecfd55e66090df23a4b7aa642"
   integrity sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==

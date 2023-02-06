@@ -1,6 +1,5 @@
 import { withRevokeCertificateV2 } from '@cardinal/certificates'
 import type { AccountData } from '@cardinal/common'
-import { tryPublicKey } from '@cardinal/common'
 import type { ReverseEntryData } from '@cardinal/namespaces'
 import {
   withInvalidateExpiredNameEntry,
@@ -119,7 +118,7 @@ export async function handleUnlink(
 ): Promise<Transaction> {
   const [namespaceId] = await namespaces.findNamespaceId(params.namespaceName)
   const transaction = new Transaction()
-  const entryMint = tryPublicKey(params.userTokenData.metaplexData?.parsed.mint)
+  const entryMint = params.userTokenData.metaplexData?.parsed.mint
   if (!entryMint) throw new Error('Failed to get mint')
   const [entryName] = nameFromToken(params.userTokenData)
   if (params.userTokenData.certificate) {
