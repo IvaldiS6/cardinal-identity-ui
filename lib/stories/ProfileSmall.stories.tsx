@@ -14,7 +14,7 @@ export default {
       options: ['mainnet', 'devnet', 'testnet'],
       description: 'Solana RPC connection to fetch the mapping from',
       mapping: {
-        mainnet: new Connection('https://api.mainnet-beta.solana.com'),
+        mainnet: new Connection('https://rpc.ankr.com/solana'),
         devnet: new Connection('https://api.devnet.solana.com'),
         testnet: new Connection('https://api.testnet.solana.com'),
       },
@@ -34,8 +34,7 @@ const Template: ComponentStory<typeof ProfileSmall> = ({ ...args }) => {
           <ProfileSmall
             address={publicKey}
             connection={
-              args.connection ||
-              new Connection('https://api.mainnet-beta.solana.com')
+              args.connection || new Connection('https://rpc.ankr.com/solana')
             }
             dark={args.dark}
           />
@@ -49,12 +48,12 @@ const Template: ComponentStory<typeof ProfileSmall> = ({ ...args }) => {
 export const Light = Template.bind({})
 Light.args = {
   address: new PublicKey('DNVVBNkdyv6tMentHdjVz5cpYmjQYcquLfYkz1fApT7Q'),
-  connection: new Connection('https://api.mainnet-beta.solana.com'),
+  connection: new Connection('https://rpc.ankr.com/solana'),
 }
 
 export const Dark = Template.bind({})
 Dark.args = {
   address: new PublicKey('DNVVBNkdyv6tMentHdjVz5cpYmjQYcquLfYkz1fApT7Q'),
-  connection: new Connection('https://api.mainnet-beta.solana.com'),
+  connection: new Connection('https://rpc.ankr.com/solana'),
   dark: true,
 }

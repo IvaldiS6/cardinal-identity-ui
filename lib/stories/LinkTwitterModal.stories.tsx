@@ -17,7 +17,7 @@ export default {
       options: ['mainnet', 'devnet', 'testnet'],
       description: 'Solana RPC connection to fetch the mapping from',
       mapping: {
-        mainnet: new Connection('https://api.mainnet-beta.solana.com'),
+        mainnet: new Connection('https://rpc.ankr.com/solana'),
         devnet: new Connection('https://api.devnet.solana.com'),
         testnet: new Connection('https://api.testnet.solana.com'),
       },
@@ -62,7 +62,7 @@ const Template: ComponentStory<LinkTwitterModalControls> = ({ ...args }) => {
                 cluster={args.cluster}
                 connection={
                   args.connection ||
-                  new Connection('https://api.mainnet-beta.solana.com')
+                  new Connection('https://rpc.ankr.com/solana')
                 }
                 wallet={{
                   publicKey: publicKey,
@@ -84,5 +84,5 @@ const Template: ComponentStory<LinkTwitterModalControls> = ({ ...args }) => {
 export const Primary = Template.bind({})
 Primary.args = {
   address: 'DNVVBNkdyv6tMentHdjVz5cpYmjQYcquLfYkz1fApT7Q',
-  connection: new Connection('https://api.mainnet-beta.solana.com'),
+  connection: new Connection('https://rpc.ankr.com/solana'),
 }
