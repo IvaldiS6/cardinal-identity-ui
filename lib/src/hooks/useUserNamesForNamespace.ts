@@ -1,6 +1,9 @@
 import type { CertificateData } from '@cardinal/certificates'
 import type { AccountData } from '@cardinal/common'
-import { getBatchedMultipleAccounts } from '@cardinal/common'
+import {
+  findMintMetadataId,
+  getBatchedMultipleAccounts,
+} from '@cardinal/common'
 import { findNamespaceId } from '@cardinal/namespaces'
 import type { TokenManagerData } from '@cardinal/token-manager/dist/cjs/programs/tokenManager'
 import * as metaplex from '@metaplex-foundation/mpl-token-metadata'
@@ -96,8 +99,8 @@ export const useUserNamesForNamespace = (
         }))
 
       // lookup metaplex data
-      const metaplexIds = tokenAccounts.map(
-        (tokenAccount) => new PublicKey(tokenAccount.parsed.mint)
+      const metaplexIds = tokenAccounts.map((tokenAccount) =>
+        findMintMetadataId(new PublicKey(tokenAccount.parsed.mint))
       )
 
       const metaplexAccountInfos = await withTrace(
@@ -112,7 +115,7 @@ export const useUserNamesForNamespace = (
               acc[tokenAccounts[i]!.pubkey.toString()] = {
                 pubkey: metaplexIds[i]!,
                 ...accountInfo,
-                parsed: metaplex.Metadata.fromAccountInfo(accountInfo)[0],
+                parsed: metaplex.Metadata.deserialize(accountInfo.data)[0],
               }
             }
           } catch (e) {}
