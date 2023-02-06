@@ -1,4 +1,4 @@
-import type { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 import { PublicKey, Transaction } from '@solana/web3.js'
 
 import { apiBase } from '../utils/constants'

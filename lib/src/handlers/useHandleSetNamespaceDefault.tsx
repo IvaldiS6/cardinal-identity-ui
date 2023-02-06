@@ -3,7 +3,7 @@ import {
   withSetGlobalReverseEntry,
   withSetNamespaceReverseEntry,
 } from '@cardinal/namespaces'
-import type { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 import type { Connection } from '@solana/web3.js'
 import { sendAndConfirmRawTransaction, Transaction } from '@solana/web3.js'
 import { useMutation, useQueryClient } from 'react-query'

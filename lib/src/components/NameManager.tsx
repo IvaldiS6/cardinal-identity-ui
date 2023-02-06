@@ -1,6 +1,6 @@
 import type { AccountData } from '@cardinal/common'
 import type { ReverseEntryData } from '@cardinal/namespaces'
-import type { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 import type { Connection } from '@solana/web3.js'
 import { FaPlus } from 'react-icons/fa'
 

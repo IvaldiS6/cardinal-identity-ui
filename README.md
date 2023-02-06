@@ -101,7 +101,7 @@ import {
   DisplayAddress,
   ProfileSmall,
 } from '@cardinal/namespaces-components'
-import { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 
 export const User: FC = () => {
   const { connection } = useConnection()
@@ -138,7 +138,7 @@ import {
   DisplayAddress,
   ProfileSmall,
 } from '@cardinal/namespaces-components'
-import { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 
 export const User: FC = () => {
   const { connection } = useConnection()

@@ -2,7 +2,7 @@ import type { CertificateData } from '@cardinal/certificates'
 import type { AccountData } from '@cardinal/common'
 import type { TokenManagerData } from '@cardinal/token-manager/dist/cjs/programs/tokenManager'
 import type * as metaplex from '@metaplex-foundation/mpl-token-metadata'
-import type { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 import type { PublicKey } from '@solana/web3.js'
 import { useMutation } from 'react-query'
 

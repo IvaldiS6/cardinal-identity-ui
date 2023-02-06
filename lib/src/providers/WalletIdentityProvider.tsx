@@ -1,4 +1,4 @@
-import type { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 import * as Sentry from '@sentry/browser'
 import type { Cluster, Connection } from '@solana/web3.js'
 import React, { useContext, useState } from 'react'

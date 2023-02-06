@@ -1,4 +1,4 @@
-import type { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 import type { Cluster, Connection } from '@solana/web3.js'
 import React from 'react'
 import { FaPowerOff, FaUser } from 'react-icons/fa'

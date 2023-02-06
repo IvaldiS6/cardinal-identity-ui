@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import type { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 import { useWallet } from '@solana/wallet-adapter-react'
 import type { PublicKey } from '@solana/web3.js'
 import { Connection } from '@solana/web3.js'

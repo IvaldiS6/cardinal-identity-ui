@@ -1,4 +1,4 @@
-import type { Wallet } from '@saberhq/solana-contrib'
+import type { Wallet } from '@project-serum/anchor/dist/cjs/provider'
 import type { Connection } from '@solana/web3.js'
 import { useEffect } from 'react'
 import { AiFillStar } from 'react-icons/ai'
