@@ -1,6 +1,6 @@
 {
   "name": "@cardinal/namespaces-components",
-  "version": "5.0.3",
+  "version": "5.1.0",
   "description": "Solana namespaces react components library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
