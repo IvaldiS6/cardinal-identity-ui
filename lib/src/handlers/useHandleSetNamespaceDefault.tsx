@@ -75,18 +75,13 @@ export const useHandleSetNamespaceDefault = (
       } else {
         /////////// set namespace default ///////////
         const transaction = new Transaction()
-        await withTrace(
-          () =>
-            withSetNamespaceReverseEntry(
-              transaction,
-              connection,
-              wallet,
-              namespaceName,
-              entryName,
-              entryMint
-            ),
-          trace,
-          { op: 'withSetNamespaceReverseEntry' }
+        withSetNamespaceReverseEntry(
+          transaction,
+          connection,
+          wallet,
+          namespaceName,
+          entryName,
+          entryMint
         )
         if (
           globalReverseEntry.data &&

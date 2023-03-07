@@ -37,7 +37,7 @@ const twitterCard = async (req: NextApiRequest, res: NextApiResponse) => {
       if (tryAddress) {
         let reverseEntry
         if (identityName) {
-          const [namespaceId] = await findNamespaceId(identity.name)
+          const namespaceId = findNamespaceId(identity.name)
           reverseEntry = await getReverseEntry(
             connection,
             tryAddress,

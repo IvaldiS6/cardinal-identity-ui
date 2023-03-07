@@ -116,7 +116,7 @@ export async function handleUnlink(
     namespaceReverseEntry?: AccountData<ReverseEntryData>
   }
 ): Promise<Transaction> {
-  const [namespaceId] = await namespaces.findNamespaceId(params.namespaceName)
+  const namespaceId = namespaces.findNamespaceId(params.namespaceName)
   const transaction = new Transaction()
   const entryMint = params.userTokenData.metaplexData?.parsed.mint
   if (!entryMint) throw new Error('Failed to get mint')

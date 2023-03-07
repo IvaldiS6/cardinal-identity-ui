@@ -9,8 +9,8 @@ export const nameFromToken = (
   tokenData: Pick<UserTokenData, 'metaplexData'>
 ): [string, string] => {
   return nameFromMint(
-    tokenData.metaplexData?.parsed.data.name || '',
-    tokenData.metaplexData?.parsed.data.uri || ''
+    tokenData.metaplexData?.parsed.data.name.replace(/\0/g, '') || '',
+    tokenData.metaplexData?.parsed.data.uri.replace(/\0/g, '') || ''
   )
 }
 

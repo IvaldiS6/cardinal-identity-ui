@@ -29,7 +29,7 @@ export const useNamespaceReverseEntries = (
         | undefined
       )[] = await Promise.all(
         namespaceIds.map((nm) =>
-          getReverseNameEntryForNamespace(connection, address, nm[0]).catch(
+          getReverseNameEntryForNamespace(connection, address, nm).catch(
             (e) => undefined
           )
         )

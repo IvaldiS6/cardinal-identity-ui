@@ -1203,10 +1203,10 @@
     "@solana/spl-token" "^0.3.5"
     "@solana/web3.js" "^1.66.2"
 
-"@cardinal/namespaces@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@cardinal/namespaces/-/namespaces-5.0.1.tgz#e0ce131cee4b9a488bfc841d9247bb13cd4671ca"
-  integrity sha512-+bbde/yjvEoBP3aSemS//9JfVocTBohWrVndn0YQYsZ+nCIlmQ/l5vPmRFt5n3cOn6KWsN+Qu35pPR0JPuzqNw==
+"@cardinal/namespaces@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@cardinal/namespaces/-/namespaces-6.0.0.tgz#2d349f183dbe4bf59e6453dd8a1ba141d7503d17"
+  integrity sha512-vjLWKuRSW7kshUIzBoKm1l2YZZipOUUIeCzk3doU73ok7LBnRq2/kVhSbs+pGfzr8IqSPW0YZ2AbBgWIGz9G1w==
   dependencies:
     "@cardinal/certificates" "^4.0.0"
     "@cardinal/common" "^7.1.3"
@@ -1214,7 +1214,7 @@
     "@cardinal/token-manager" "^4.4.1"
     "@metaplex-foundation/mpl-token-metadata" "^2.8.1"
     "@project-serum/anchor" "^0.26.0"
-    "@solana/spl-token" "0.3.5"
+    "@solana/spl-token" "0.3.6"
     "@solana/web3.js" "^1.34.0"
 
 "@cardinal/payment-manager@^3.0.0":
@@ -2593,16 +2593,7 @@
   dependencies:
     buffer "~6.0.3"
 
-"@solana/spl-token@0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@solana/spl-token/-/spl-token-0.3.5.tgz#cabf9f92d755589420b46e457b9b10a879e755aa"
-  integrity sha512-0bGC6n415lGjKu02gkLOIpP1wzndSP0SHwN9PefJ+wKAhmfU1rl3AV1Pa41uap2kzSCD6F9642ngNO8KXPvh/g==
-  dependencies:
-    "@solana/buffer-layout" "^4.0.0"
-    "@solana/buffer-layout-utils" "^0.2.0"
-    buffer "^6.0.3"
-
-"@solana/spl-token@^0.3.5":
+"@solana/spl-token@0.3.6", "@solana/spl-token@^0.3.5":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@solana/spl-token/-/spl-token-0.3.6.tgz#35473ad2ed71fe91e5754a2ac72901e1b8b26a42"
   integrity sha512-P9pTXjDIRvVbjr3J0mCnSamYqLnICeds7IoH1/Ro2R9OBuOHdp5pqKZoscfZ3UYrgnCWUc1bc9M2m/YPHjw+1g==
@@ -8228,6 +8219,18 @@ eslint-plugin-simple-import-sort@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-7.0.0.tgz#a1dad262f46d2184a90095a60c66fef74727f0f8"
   integrity sha512-U3vEDB5zhYPNfxT5TYR7u01dboFZp+HNpnGhkDB2g/2E4wZ/g1Q9Ton8UwCLfRV9yAKyYqDh62oHOamvkFxsvw==
+
+eslint-plugin-unused-imports@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-unused-imports/-/eslint-plugin-unused-imports-2.0.0.tgz#d8db8c4d0cfa0637a8b51ce3fd7d1b6bc3f08520"
+  integrity sha512-3APeS/tQlTrFa167ThtP0Zm0vctjr4M44HMpeg1P4bK6wItarumq0Ma82xorMKdFsWpphQBlRPzw/pxiVELX1A==
+  dependencies:
+    eslint-rule-composer "^0.3.0"
+
+eslint-rule-composer@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-rule-composer/-/eslint-rule-composer-0.3.0.tgz#79320c927b0c5c0d3d3d2b76c8b4a488f25bbaf9"
+  integrity sha512-bt+Sh8CtDmn2OajxvNO+BX7Wn4CIWMpTRm3MaiKPCQcnnlm0CS2mhui6QaoeQugs+3Kj2ESKEEGJUdVafwhiCg==
 
 eslint-scope@5.1.1, eslint-scope@^5.1.1:
   version "5.1.1"

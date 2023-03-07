@@ -74,7 +74,7 @@ export const useUserNamesForNamespace = (
         await Promise.all(
           identities.map(async (i) => ({
             ...i,
-            namespaceId: (await findNamespaceId(i.name))[0].toString(),
+            namespaceId: findNamespaceId(i.name).toString(),
           }))
         )
 

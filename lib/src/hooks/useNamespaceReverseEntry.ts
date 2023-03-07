@@ -18,7 +18,7 @@ export const useNamespaceReverseEntry = (
     ['useNamespaceReverseEntry', namespaceName, pubkey?.toString()],
     async () => {
       if (!pubkey || !connection) return
-      const [namespaceId] = await findNamespaceId(namespaceName)
+      const namespaceId = findNamespaceId(namespaceName)
       let reverseEntry: AccountData<ReverseEntryData> | undefined
       try {
         reverseEntry = await withTrace(
