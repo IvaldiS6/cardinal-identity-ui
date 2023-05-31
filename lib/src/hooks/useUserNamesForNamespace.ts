@@ -36,8 +36,8 @@ export const identityFromMetaplexData = (
         (creator) =>
           namespaceId === creator.address.toString() && creator.verified
       ) ||
-      (metaplexData?.parsed?.data?.symbol === 'NAME' &&
-        metaplexData?.parsed?.data?.name.includes(name))
+      (metaplexData?.parsed?.data?.symbol.replace(/\0/g, '') === 'NAME' &&
+        metaplexData?.parsed?.data?.name.replace(/\0/g, '').includes(name))
   )
 }
 
